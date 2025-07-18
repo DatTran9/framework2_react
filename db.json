@@ -28,5 +28,38 @@
       "category": "Console",
       "price": 150
     }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "email": "user@gmail.com",
+      "password": "user123",
+      "role": "user"
+    },
+
+    {
+      "id": 2,
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ],
+
+  "categories": [
+    {
+      "id": 1,
+      "name": "Gear"
+    },
+
+    {
+      "id": 2,
+      "name": "Console"
+    },
+
+    {
+      "id": 3,
+      "name": "Laptop"
+    }
   ]
 }
