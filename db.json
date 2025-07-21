@@ -1,64 +1,71 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Razer DeathAdder V3 Pro (Faker Edition)",
       "image": "https://i.pinimg.com/1200x/ab/b2/9e/abb29eb58f34f0a45739a90e54f88601.jpg",
       "category": "Gear",
       "price": 49
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Razer Wolverine V3 Pro",
       "image": "https://i.pinimg.com/1200x/75/6f/5c/756f5c687b62909e4e22c623a667c12d.jpg",
       "category": "Gear",
       "price": 39
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "PS5 Controller (Spider-Man 2 Miles Morales Edition) ",
       "image": "https://i.pinimg.com/1200x/bc/dc/41/bcdc41182c3618f48ffbcbdce6bfeeb8.jpg",
       "category": "Gear",
       "price": 59
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Nitendo Switch 2",
       "image": "https://i.pinimg.com/1200x/c0/ac/19/c0ac19e6536de5ee5e3fa8c3932dc1f1.jpg",
       "category": "Console",
       "price": 150
     }
   ],
-
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@gmail.com",
       "password": "user123",
       "role": "user"
     },
-
     {
-      "id": 2,
+      "id": "2",
       "email": "admin@gmail.com",
       "password": "admin123",
       "role": "admin"
+    },
+    {
+      "id": "e978",
+      "email": "t1con@gmail.com",
+      "password": "tcon12345",
+      "role": "admin"
+    },
+    {
+      "id": "8723",
+      "email": "potche@gmail.com",
+      "password": "datbe210903",
+      "role": "user"
     }
   ],
-
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Gear"
     },
-
     {
-      "id": 2,
+      "id": "2",
       "name": "Console"
     },
-
     {
-      "id": 3,
+      "id": "3",
       "name": "Laptop"
     }
   ]
