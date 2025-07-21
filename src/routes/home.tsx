@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../auth/authContext";
+import { useNavigate } from "react-router-dom";
 
 interface Products {
   id: number;
@@ -16,6 +18,14 @@ const Home = () => {
       .then((data) => setProducts(data))
       .catch((err) => console.error("Lỗi khi tải dữ liệu sản phẩm:", err));
   }, []);
+
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <div className="bg-white">
@@ -150,6 +160,14 @@ const Home = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div>
+        <button
+          className="px-4 py-2 bg-red-500 text-red-400 rounded hover:bg-red-600"
+          onClick={handleLogout}
+        >
+          Log Out
+        </button>
       </div>
     </div>
   );

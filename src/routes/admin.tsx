@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useAuth } from "../auth/authContext";
+import { useNavigate } from "react-router-dom";
 
 interface User {
   id: number;
@@ -21,8 +23,18 @@ const Admin = () => {
 
   useEffect(() => {
     axios.get("http://localhost:3001/users").then((res) => setUsers(res.data));
-    axios.get("http://localhost:3001/products").then((res) => setProducts(res.data));
+    axios
+      .get("http://localhost:3001/products")
+      .then((res) => setProducts(res.data));
   }, []);
+
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -45,7 +57,9 @@ const Admin = () => {
                   <td className="py-2 px-4">{user.email}</td>
                   <td className="py-2 px-4">{user.role}</td>
                   <td className="py-2 px-4">
-                    <button className="text-blue-500 hover:underline">Edit</button>
+                    <button className="text-blue-500 hover:underline">
+                      Edit
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -70,13 +84,18 @@ const Admin = () => {
               {products.map((product) => (
                 <tr key={product.id} className="border-t">
                   <td className="py-2 px-4">
-                    <img src={product.image} className="h-10 w-10 rounded object-cover" />
+                    <img
+                      src={product.image}
+                      className="h-10 w-10 rounded object-cover"
+                    />
                   </td>
                   <td className="py-2 px-4">{product.name}</td>
                   <td className="py-2 px-4">{product.category}</td>
-                  <td className="py-2 px-4">{product.price}</td>
+                  <td className="py-2 px-4">${product.price}</td>
                   <td className="py-2 px-4">
-                    <button className="text-blue-500 hover:underline">Edit</button>
+                    <button className="text-blue-500 hover:underline">
+                      Edit
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -84,6 +103,15 @@ const Admin = () => {
           </table>
         </section>
       </main>
+
+      <div>
+        <button
+          onClick={handleLogout}
+          className="px-4 py-2 bg-red-500 text-red-400 rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 };
