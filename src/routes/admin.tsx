@@ -60,6 +60,9 @@ const Admin = () => {
                     <button className="text-blue-500 hover:underline">
                       Edit
                     </button>
+                    <button className="text-red-500 hover:underline">
+                      Remove
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -95,6 +98,9 @@ const Admin = () => {
                   <td className="py-2 px-4">
                     <button className="text-blue-500 hover:underline">
                       Edit
+                    </button>
+                    <button className="text-red-500 hover:underline">
+                      Delete
                     </button>
                   </td>
                 </tr>
