@@ -11,13 +11,25 @@ interface Products {
 }
 const Home = () => {
   const [products, setProducts] = useState<Products[]>([]);
+  const [search, setSearch] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState<Products[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        setProducts(data);
+        setFilteredProducts(data);
+      })
       .catch((err) => console.error("Lỗi khi tải dữ liệu sản phẩm:", err));
   }, []);
+
+  useEffect(() => {
+    const results = products.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredProducts(results);
+  }, [search, products]);
 
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -97,13 +109,15 @@ const Home = () => {
               <input
                 type="search"
                 id="default-search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 className="block w-64 pl-10 pr-3 py-2 text-sm border border-gray-300 rounded-lg"
                 placeholder="Search..."
                 required
               />
             </div>
           </form>
-
+          
           {/* Cart icon */}
           <div className="relative">
             <div className="absolute -top-2 -left-2">
@@ -134,7 +148,7 @@ const Home = () => {
 
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div key={product.id} className="group relative">
               <img
                 alt={product.name}

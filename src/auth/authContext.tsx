@@ -12,7 +12,7 @@ export interface User {
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<User | null>;
   register: (email: string, password: string, role: Role) => Promise<boolean>;
   logout: () => void;
 }
@@ -25,7 +25,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return saved ? JSON.parse(saved) : null;
   });
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (
+    email: string,
+    password: string
+  ): Promise<User | null> => {
     try {
       const res = await axios.get<User[]>(
         `http://localhost:3001/users?email=${email}&password=${password}`
@@ -34,12 +37,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const loggedInUser = res.data[0];
         setUser(loggedInUser);
         localStorage.setItem("user", JSON.stringify(loggedInUser));
-        return true;
+        return loggedInUser;
       }
-      return false;
+      return null;
     } catch (error) {
       console.error("Failed login: ", error);
-      return false;
+      return null;
     }
   };
 
@@ -49,7 +52,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     role: Role
   ): Promise<boolean> => {
     try {
-      //Check xem email đã tồn tại chưa
       const checkEmail = await axios.get<User[]>(
         `http://localhost:3001/users?email=${email}`
       );
