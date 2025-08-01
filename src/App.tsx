@@ -11,6 +11,7 @@ import Cart from "./routes/cart";
 import Admin from "./routes/admin";
 import { AuthProvider } from "./auth/authContext";
 import { ProtectedRoute } from "./components/protectedRoute";
+import Detail from "./routes/detail";
 
 function App() {
   const routes = createBrowserRouter([
@@ -46,6 +47,16 @@ function App() {
       element: (
         <ProtectedRoute role="admin">
           <Admin />
+        </ProtectedRoute>
+      ),
+    },
+
+    //Detail routes
+    {
+      path: "/detail/:id",
+      element: (
+        <ProtectedRoute role="user">
+          <Detail />
         </ProtectedRoute>
       ),
     },
