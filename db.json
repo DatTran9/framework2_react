@@ -20,51 +20,20 @@
       "image": "https://i.pinimg.com/1200x/bc/dc/41/bcdc41182c3618f48ffbcbdce6bfeeb8.jpg",
       "category": "Gear",
       "price": 59
-    },
-    {
-      "id": "4",
-      "name": "Nitendo Switch 2",
-      "image": "https://i.pinimg.com/1200x/c0/ac/19/c0ac19e6536de5ee5e3fa8c3932dc1f1.jpg",
-      "category": "Console",
-      "price": 150
     }
   ],
   "users": [
     {
-      "id": "1",
       "email": "user@gmail.com",
-      "password": "user123",
-      "role": "user"
+      "password": "user1234",
+      "role": "user",
+      "id": "1"
     },
     {
       "id": "2",
       "email": "admin@gmail.com",
       "password": "admin123",
       "role": "admin"
-    },
-    {
-      "id": "e978",
-      "email": "t1con@gmail.com",
-      "password": "tcon12345",
-      "role": "admin"
-    },
-    {
-      "id": "8723",
-      "email": "potche@gmail.com",
-      "password": "datbe210903",
-      "role": "user"
-    },
-    {
-      "id": "e7e2",
-      "email": "nike@gmail.com",
-      "password": "nike1234",
-      "role": "admin"
-    },
-    {
-      "id": "24e1",
-      "email": "adidas@gmail.com",
-      "password": "adidas1234",
-      "role": "user"
     }
   ],
   "categories": [

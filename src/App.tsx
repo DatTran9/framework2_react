@@ -12,6 +12,8 @@ import Admin from "./routes/admin";
 import { AuthProvider } from "./auth/authContext";
 import { ProtectedRoute } from "./components/protectedRoute";
 import Detail from "./routes/detail";
+import UserEdit from "./routes/Edit/User";
+import ProductEdit from "./routes/Edit/Product";
 
 function App() {
   const routes = createBrowserRouter([
@@ -29,6 +31,11 @@ function App() {
     {
       path: "/register",
       element: <Register />,
+    },
+
+    {
+      path: "/detail/:id",
+      element: <Detail />,
     },
 
     //User routes
@@ -51,12 +58,20 @@ function App() {
       ),
     },
 
-    //Detail routes
     {
-      path: "/detail/:id",
+      path: "/admin/user-edit/:id",
       element: (
-        <ProtectedRoute role="user">
-          <Detail />
+        <ProtectedRoute role="admin">
+          <UserEdit />
+        </ProtectedRoute>
+      ),
+    },
+
+    {
+      path: "/admin/product-edit/:id",
+      element: (
+        <ProtectedRoute role="admin">
+          <ProductEdit />
         </ProtectedRoute>
       ),
     },

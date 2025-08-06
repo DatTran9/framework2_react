@@ -21,15 +21,37 @@ const Admin = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
     axios.get("http://localhost:3001/users").then((res) => setUsers(res.data));
     axios
       .get("http://localhost:3001/products")
       .then((res) => setProducts(res.data));
-  }, []);
+  };
 
-  const { logout } = useAuth();
-  const navigate = useNavigate();
+  const handleDeleteUser = async (id: number) => {
+    const confirm = window.confirm("Bạn có chắc chắn muốn xoá User này không?");
+    if (confirm) {
+      await axios.delete(`http://localhost:3001/users/${id}`);
+      fetchData();
+    }
+  };
+
+  const handleDeleteProduct = async (id: number) => {
+    const confirm = window.confirm(
+      "Bạn có chắc chắn muốn xoá Product này không?"
+    );
+    if (confirm) {
+      await axios.delete(`http://localhost:3001/products/${id}`);
+      fetchData();
+    }
+  };
 
   const handleLogout = () => {
     logout();
@@ -57,10 +79,16 @@ const Admin = () => {
                   <td className="py-2 px-4">{user.email}</td>
                   <td className="py-2 px-4">{user.role}</td>
                   <td className="py-2 px-4">
-                    <button className="text-blue-500 hover:underline">
+                    <button
+                      onClick={() => navigate(`/admin/user-edit/${user.id}`)}
+                      className="text-blue-500 hover:underline"
+                    >
                       Edit
                     </button>
-                    <button className="text-red-500 hover:underline">
+                    <button
+                      onClick={() => handleDeleteUser(user.id)}
+                      className="text-red-500 hover:underline"
+                    >
                       Remove
                     </button>
                   </td>
@@ -96,10 +124,18 @@ const Admin = () => {
                   <td className="py-2 px-4">{product.category}</td>
                   <td className="py-2 px-4">${product.price}</td>
                   <td className="py-2 px-4">
-                    <button className="text-blue-500 hover:underline">
+                    <button
+                      onClick={() =>
+                        navigate(`/admin/product-edit/${product.id}`)
+                      }
+                      className="text-blue-500 hover:underline"
+                    >
                       Edit
                     </button>
-                    <button className="text-red-500 hover:underline">
+                    <button
+                      onClick={() => handleDeleteProduct(product.id)}
+                      className="text-red-500 hover:underline"
+                    >
                       Delete
                     </button>
                   </td>
