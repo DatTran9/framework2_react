@@ -15,11 +15,11 @@
       "price": 39
     },
     {
-      "id": "3",
-      "name": "PS5 Controller (Spider-Man 2 Miles Morales Edition) ",
+      "name": "PS5  (Spider-Man 2 Miles Morales Edition) ",
+      "price": "60",
+      "category": "Laptop",
       "image": "https://i.pinimg.com/1200x/bc/dc/41/bcdc41182c3618f48ffbcbdce6bfeeb8.jpg",
-      "category": "Gear",
-      "price": 59
+      "id": "3"
     },
     {
       "name": "Hello",
@@ -41,6 +41,12 @@
       "email": "admin@gmail.com",
       "password": "admin123",
       "role": "admin"
+    },
+    {
+      "email": "user2@gmail.com",
+      "password": "user2",
+      "role": "admin",
+      "id": "E2L0lkl"
     }
   ],
   "categories": [
