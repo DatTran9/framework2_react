@@ -100,6 +100,7 @@ const Admin = () => {
 
         {/* Products section */}
         <section id="products">
+          <div className="flex justify-between items-center mb-4"></div>
           <h3 className="text-xl font-semibold mb-4">Products</h3>
           <table className="min-w-full bg-white rounded-lg overflow-hidden">
             <thead>
@@ -146,10 +147,16 @@ const Admin = () => {
         </section>
       </main>
 
+      {/*Action buttons */}
+      <div>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <a href="/admin/product-add">+ Add Product</a>
+        </button>
+      </div>
       <div>
         <button
           onClick={handleLogout}
-          className="px-4 py-2 bg-red-500 text-red-400 rounded hover:bg-red-600"
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
         >
           Logout
         </button>

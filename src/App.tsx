@@ -14,6 +14,7 @@ import { ProtectedRoute } from "./components/protectedRoute";
 import Detail from "./routes/detail";
 import UserEdit from "./routes/Edit/User";
 import ProductEdit from "./routes/Edit/Product";
+import ProductAdd from "./routes/ProductAdd";
 
 function App() {
   const routes = createBrowserRouter([
@@ -72,6 +73,15 @@ function App() {
       element: (
         <ProtectedRoute role="admin">
           <ProductEdit />
+        </ProtectedRoute>
+      ),
+    },
+
+    {
+      path: "/admin/product-add",
+      element: (
+        <ProtectedRoute role="admin">
+          <ProductAdd />
         </ProtectedRoute>
       ),
     },

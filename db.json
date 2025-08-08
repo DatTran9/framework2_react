@@ -20,6 +20,13 @@
       "image": "https://i.pinimg.com/1200x/bc/dc/41/bcdc41182c3618f48ffbcbdce6bfeeb8.jpg",
       "category": "Gear",
       "price": 59
+    },
+    {
+      "name": "Hello",
+      "price": 100,
+      "category": "Laptop",
+      "image": "https://i.pinimg.com/736x/70/51/2d/70512daa227333fe2ef03e85e63d9392.jpg",
+      "id": "y2c32NO"
     }
   ],
   "users": [
